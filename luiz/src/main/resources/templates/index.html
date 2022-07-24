@@ -5,24 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/Formulario.css">
+    <link rel="stylesheet" href="css/Formulario.css" th:href="@{/css/Formulario.css}">
 
     <title>CRUD</title>
 </head>
 <body>
     <div id="Container">
         <h1>Cadastro</h1>
-        <form action="/Index" method="post" class="Formulario">
+        <form action="/Index" method="post" class="Formulario" th:object="${Pessoa}">
             <fieldset> <legend>Pessoa</legend>
-                <input type="text" class="Entrada" name="Nome" placeholder="Nome">
-                <input type="text" class="Entrada" name="Apelido" placeholder="Apelido">
-                <input type="text" class="Entrada" name="Time" placeholder="Time do coração">
-                <input type="number" class="Entrada" name="CPF" placeholder="CPF">
-                <input type="text" class="Entrada" name="Hobbie" placeholder="Hobbie">
+                <input type="hidden" name="id" th:value="${Pessoa.id}">
+                <input type="text" class="Entrada" name="Nome" placeholder="Nome" th:value="${Pessoa.Nome}">
+                <input type="text" class="Entrada" name="Apelido" placeholder="Apelido" th:value="${Pessoa.Apelido}">
+                <input type="text" class="Entrada" name="Time" placeholder="Time do coração" th:value="${Pessoa.Time}">
+                <input type="number" class="Entrada" name="CPF" placeholder="CPF" th:value="${Pessoa.CPF}">
+                <input type="text" class="Entrada" name="Hobbie" placeholder="Hobbie" th:value="${Pessoa.Time}">
             </fieldset>
             <fieldset> <legend>Cidade</legend>
-                <input type="text" class="Entrada" name="Cidade" placeholder="Nome da Cidade">
-                <input type="number" class="Entrada" name="Quantidade" placeholder="Quantidade de Habitantes">
+                <input type="text" class="Entrada" name="Cidade" placeholder="Nome da Cidade" th:value="${Pessoa.Cidade}">
+                <input type="number" class="Entrada" name="Quantidade" placeholder="Quantidade de Habitantes" th:value="${Pessoa.Quantidade}">
     
                 <select id="Estado" name="Estado">
                     <option value="AC">Acre</option>
