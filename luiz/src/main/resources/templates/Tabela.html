@@ -7,6 +7,7 @@
     <title>Tabela de Dados</title>
 
     <link rel="stylesheet" href="css/Tabela.css">
+    <script src="https://kit.fontawesome.com/791a1f3e9d.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>Tabela de Cadastro</h1>
@@ -42,10 +43,10 @@
                 <td data-th-text="${Pessoa.Quantidade}"></td>
                 <td data-th-text="${Pessoa.Estado}"></td>
                 <td>
-                    <a th:href="@{'/Editar/'+${Pessoa.id}}">Editar</a>
+                    <a class="fa-solid fa-pen fa-2x" th:href="@{'/Editar/'+${Pessoa.id}}"></a>
                 </td>
                 <td>
-                    <a href="">Excluir</a>
+                    <a class="fa-solid fa-x fa-2x" th:href="@{'/Remover/'+${Pessoa.id}}"></a>
                 </td>
             </tr>
         </tbody>

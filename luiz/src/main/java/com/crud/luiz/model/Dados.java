@@ -2,7 +2,7 @@ package com.crud.luiz.model;
 
 public class Dados {
     
-    public Dados(int id, String Nome, String Apelido, String Time, int CPF, String Hobbie, String Cidade, int Quantidade, String Estado){
+    public Dados(int id, String Nome, String Apelido, String Time, String CPF, String Hobbie, String Cidade, int Quantidade, String Estado){
         //Pessoa:
         this.id = id;
         this.Nome = Nome;
@@ -23,7 +23,7 @@ public class Dados {
     private String Nome;
     private String Apelido;
     private String Time;
-    private int CPF;
+    private String CPF;
     private String Hobbie;
     //Cidade:
     private String Cidade;
@@ -60,10 +60,10 @@ public class Dados {
         return Time;
     }
     //CPF:
-    public void setCPF(int CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
     //Hobbie:

@@ -59,9 +59,23 @@ public class CRUD_Controller {
     public ModelAndView Editar(@PathVariable("id") int id){
         ModelAndView MV = new ModelAndView("index");
 
-        Dados Pessoa = Banco_de_Dados.stream().filter(Dados -> id == Dados.getId()).findFirst().get();
+        Dados Pessoa = Banco_de_Dados.stream()
+                                     .filter(Dados -> id == Dados.getId())
+                                     .findFirst()
+                                     .get();
         MV.addObject("Pessoa", Pessoa);
         return MV;
+    }
+
+    @GetMapping("/Remover/{id}")
+    public String Remover(@PathVariable("id") int id){
+        Dados Pessoa = Banco_de_Dados.stream()
+                                     .filter(Dados -> id == Dados.getId())
+                                     .findFirst()
+                                     .get();
+        Banco_de_Dados.remove(Pessoa);
+        
+        return "redirect:/Tabela";
     }
 }   
 
