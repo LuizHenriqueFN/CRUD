@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.crud.luiz.model.Dados;
+import com.crud.luiz.model.CPF;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
 public class CRUD_Controller {
 
-    List<Dados> Banco_de_Dados = new ArrayList<>();
+    List<Dados> Banco_de_Dados = new ArrayList<>();     
 
     @GetMapping("/Index")
     public ModelAndView Pag_Inicial(){
@@ -31,19 +34,34 @@ public class CRUD_Controller {
             
             Banco_de_Dados.set(Banco_de_Dados.indexOf(Nova_Pessoa), pessoa);   
         }else{
-            int id = Banco_de_Dados.size() + 1;
-            
-            Banco_de_Dados.add(new Dados(
-                id,
-                pessoa.getNome(),
-                pessoa.getApelido(),
-                pessoa.getTime(),
-                pessoa.getCPF(),
-                pessoa.getHobbie(),
-                pessoa.getCidade(),
-                pessoa.getQuantidade(),
-                pessoa.getEstado()
-            ));
+            String CPF_Atual = (pessoa.getCPF());
+            CPF_Atual = CPF_Atual.replace(".","");
+            CPF_Atual = CPF_Atual.replace("-","");
+
+            if(CPF_Atual.length() != 11){
+                System.out.println("\n\tErro CPF tamanho\n");
+                return "redirect:/Pagina_Erro";
+            }
+
+            CPF cpf = new CPF(CPF_Atual);
+            if(cpf.Valido()){
+                int id = Banco_de_Dados.size() + 1;
+                
+                Banco_de_Dados.add(new Dados(
+                    id,
+                    pessoa.getNome(),
+                    pessoa.getApelido(),
+                    pessoa.getTime(),
+                    pessoa.getCPF(),
+                    pessoa.getHobbie(),
+                    pessoa.getCidade(),
+                    pessoa.getQuantidade(),
+                    pessoa.getEstado()
+                ));
+            }else{
+                System.out.println("\n\tErro CPF inválido\n");
+                return "redirect:/Pagina_Erro";
+            }
         }        
         return "redirect:/Tabela"; //Nome HTML
     }
@@ -77,6 +95,12 @@ public class CRUD_Controller {
         
         return "redirect:/Tabela";
     }
+
+    @GetMapping("/Pagina_Erro")
+    public String AvisaERRO(){
+        return "Pagina_Erro";
+    }
+    
 }   
 
 
