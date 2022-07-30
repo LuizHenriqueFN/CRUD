@@ -55,4 +55,31 @@ td{
 }
 a{
     color: #2ecc71;
+    text-decoration: none
+}
+
+
+#NavBar{
+    display: flex;
+    color: black;
+}
+li{
+    list-style: none;
+    margin: 20px 0px 0px 30px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.NB_itens{
+    text-align: center;
+    border: 2px solid #2ecc71;
+    outline: none;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 24px;
+    transition: 0.25s;
+    text-decoration: none
+}
+.NB_itens:hover{
+    background: #2ecc71;
 }

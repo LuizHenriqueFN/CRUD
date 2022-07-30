@@ -32,10 +32,8 @@ a{
     border-radius: 24px;
     transition: 0.25s;
     cursor: pointer;
+    text-decoration: none
 }
 a:hover{
     background: #2ecc71;
-}
-a{
-    color: #2ecc71;
 }
