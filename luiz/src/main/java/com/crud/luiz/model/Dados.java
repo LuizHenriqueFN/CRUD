@@ -1,5 +1,13 @@
 package com.crud.luiz.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Pessoas")
 public class Dados {
     
     public Dados(int id, String Nome, String Apelido, String Time, String CPF, String Hobbie, String Cidade, int Quantidade, String Estado){
@@ -19,6 +27,8 @@ public class Dados {
     public Dados(){}
 
     //Pessoa:
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String Nome;
     private String Apelido;
